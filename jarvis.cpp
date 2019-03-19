@@ -26,7 +26,7 @@ double slope(Point p, Point q)
 	return (q.y-p.y)/(q.x-p.x);
 }
 
-int orientataion(Point a, Point b, Point c)
+int orientation(Point a, Point b, Point c)
 {
 	/*
 	returns:-
@@ -34,15 +34,15 @@ int orientataion(Point a, Point b, Point c)
 		1 : clockwise
 		2 : anti-clockwise
 	*/
-	double slope_ab = slope(a,b);
-	double slope_bc = slope(b,c);
 
-	if(slope_ab == slope_bc)
+	double test = (b.y - a.y)*(c.x - b.x) - (c.y - b.y)*(b.x-a.x);
+
+	if(test==0)
 		return 0;
-	else if(slope_ab < slope_bc)
-		return 2;
-	else
+	else if(test>0)
 		return 1;
+	else
+		return 2;
 }
 
 vector<Point> jarvis_march(vector<Point> points)
@@ -52,18 +52,17 @@ vector<Point> jarvis_march(vector<Point> points)
 	for(int i=1; i<points.size(); i++)
 		if(points[i].x < points[left_most].x)
 			left_most = i;
-	int p = left_most;
+	int p = left_most,q;
 	do
 	{
 		answer.push_back(points[p]);
-		int q = (p+1)%points.size();
+		q = (p+1)%points.size();
 
 		for(int i=0; i<points.size(); i++)
-			if(orientataion(points[p],points[q],points[i])==2)
+			if(orientation(points[p],points[i],points[q])==2)
 				q=i;
 
 		p=q;
-
 	}while(p!=left_most);
 
 	return answer;
@@ -72,11 +71,18 @@ vector<Point> jarvis_march(vector<Point> points)
 int main()
 {
 	vector<Point> points;
-	points.push_back(new Point(0,3));
-	points.push_back(new Point(2,2));
-	points.push_back(new Point());
-	points.push_back(new Point(0,3));
-	points.push_back(new Point(0,3));
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int p,q;
+		cin>>p>>q;
+		Point po(p,q);
+		points.push_back(po);
+	}
+	vector<Point> answer = jarvis_march(points);
+	for(Point p : answer)
+		cout<<p.x<<" "<<p.y<<endl;
 	return 0;
 }
 
