@@ -85,32 +85,3 @@ int main()
 		cout<<p.x<<" "<<p.y<<endl;
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// bool check_intersection(Point p1, Point q1, Point p2, Point q2)
-// {
-// 	if(orientataion(p1,q1,p2) != orientataion(p1,q1,q2)
-// 		&& orientataion(p2,q2,p1) != orientataion(p2,q2,q1))
-// 		return true;
-
-// 	if(orientataion(p1,q1,p2)==0 orientataion(p1,q1,q2)==0
-// 		&& orientataion(p2,q2,p1)==0 orientataion(p2,q2,q1)==0)
-// }

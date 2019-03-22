@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-inp_points = np.loadtxt(fname="inp.txt",skiprows=1)
-print(inp_points)
+inp_points = np.loadtxt(fname="inp2.txt",skiprows=1)
+# print(inp_points)
 x = []
 y = []
 for point in inp_points:
@@ -11,7 +11,7 @@ for point in inp_points:
 plt.scatter(x,y,edgecolors="lightblue")
 
 out_points = np.loadtxt(fname="out.txt")
-print(out_points)
+# print(out_points)
 x = []
 y = []
 for point in out_points:
