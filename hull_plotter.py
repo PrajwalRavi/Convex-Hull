@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-inp_points = np.loadtxt(fname="inp2.txt",skiprows=1)
+inp_points = np.loadtxt(fname="inp_1000_gen.txt",skiprows=1)
 # print(inp_points)
 x = []
 y = []
