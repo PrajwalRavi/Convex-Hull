@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*! Class for creating points */
+
 class Point
 {
 	public:
-		double x;
+		double x; 
 		double y;
 		Point(double x, double y);
 		bool NotEquals(Point);
@@ -28,11 +30,11 @@ double slope(Point p, Point q)
 
 int orientation(Point a, Point b, Point c)
 {
-	/*
-	returns:-
-		0 : Collinear
-		1 : clockwise
-		2 : anti-clockwise
+	/**
+	*returns:-
+	*	0 : Collinear
+	*	1 : clockwise
+	*	2 : anti-clockwise
 	*/
 
 	double test = (b.y - a.y)*(c.x - b.x) - (c.y - b.y)*(b.x-a.x);
@@ -75,7 +77,7 @@ int main()
 	cin>>n;
 	while(n--)
 	{
-		int p,q;
+		double p,q;
 		cin>>p>>q;
 		Point po(p,q);
 		points.push_back(po);
