@@ -31,7 +31,7 @@ int orientation(Point a, Point b, Point c)
 
 	double test = (b.y - a.y)*(c.x - b.x) - (c.y - b.y)*(b.x-a.x);
 
-	if(test<=1e-6)
+	if(abs(test)<=1e-7)
 		return 0;
 	else if(test>0)
 		return 1;
@@ -126,9 +126,14 @@ vector<Point> kps_convexhull(vector<Point> points){
 	// check if this is the right way to split points into UH and LH
 	Line l1(umin,umax);
 	Line l2(lmin,lmax);
-	for(auto k: points){
-		if(!l2.Position(k) && lmin.NotEquals(k) && lmax.NotEquals(k)) LH.push_back(k);
-		else if(l1.Position(k) && !umin.NotEquals(k) && !umax.NotEquals(k)) UH.push_back(k);
+	for(auto k: points)
+	{
+		int orient_upper = orientation(umin,umax,k);
+		int orient_lower = orientation(lmin,lmax,k);
+		if(orient_upper==2)
+			UH.push_back(k);
+		else if(orient_lower==1)
+			LH.push_back(k);
 	}
 	vector<Point> Ures = upper_hull(umin,umax,UH);
 	//vector<Point> Lres = lower_hull(lmin,lmax,LH);
@@ -138,6 +143,12 @@ vector<Point> kps_convexhull(vector<Point> points){
 	return Ures;
 	
 }
+
+bool comparator(Point p, Point q)
+{
+	return p.x<q.x;
+}
+
 vector<Point> upper_hull(Point umin,Point umax,vector<Point> points){
 	// for(int i=0; i<points.size(); i++)
 	// 	cout<<points[i].x<<endl;
@@ -169,10 +180,17 @@ vector<Point> upper_hull(Point umin,Point umax,vector<Point> points){
 	vector<Point> Tleft_;
 	vector<Point> Tright_;
 
-	double L;
-	vector<double> xpoints;
-	for(auto k : points) xpoints.push_back(k.x);
-	L = median(xpoints);// = medOfX write function to compute median of X's
+	sort(points.begin(),points.end(),comparator);
+	double median_x;
+	if(points.size()%2)
+		median_x = points[points.size()/2].x;
+	else
+		median_x = (points[points.size()/2].x+points[points.size()/2-1].x)/2;
+
+	double L = median_x;
+	// vector<double> xpoints;
+	// for(auto k : points) xpoints.push_back(k.x);
+	// L = median(xpoints);// = medOfX write function to compute median of X's
 	for(auto k : points){
 		if(k.x <= L) Tleft.push_back(k);
 		else  Tright.push_back(k);
@@ -181,8 +199,11 @@ vector<Point> upper_hull(Point umin,Point umax,vector<Point> points){
 	pair<Point,Point> upper = upper_bridge(points,L);
 
 	Line left = Line(umin,upper.first);
-	for(auto k : Tleft){
-		if(orientation(umin,upper.first,k)==2){
+	for(auto k : Tleft)
+	{
+		int orient = orientation(umin,upper.first,k);
+		// cout<<k.x<<" "<<k.y<<" "<<orient<<endl;
+		if(orient==2){
 			Tleft_.push_back(k);
 		}
 	}
