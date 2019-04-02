@@ -1,33 +1,36 @@
 #include <bits/stdc++.h>
 #include "convex.h"
 using namespace std;
-
-
+	
+		///Parameterized constructor of Point 
 		Point::Point(double x_coordinate, double y_coordinate)
 		{
 			x = x_coordinate;
 			y = y_coordinate;
 		}
+		///Constructor of Point
 		Point::Point()
 		{
 			x=0;
 			y=0;
 		}
+		/// returns whether Point 'p' is equal to the current Point object or not
 		bool Point::NotEquals(Point p)
 		{
 			return (x==p.x && y==p.y);
 		}
+		///returns euclidian distance between the current Point object and the Point 'p'
 		double Point::distance(Point p)
 		{
 			return (pow(p.x-x,2)+pow(p.y-y,2));
 		}
 
-		void ConvexHull::swap_elements(double *a, double *b) 
-		{ 
-			double temp = *a; 
-			*a = *b; 
-			*b = temp; 
-		}
+		// void ConvexHull::swap_elements(double *a, double *b) 
+		// { 
+		// 	double temp = *a; 
+		// 	*a = *b; 
+		// 	*b = temp; 
+		// }
 
 		// int partition_med(vector<double>& arr,int low,int high,double element){
 		// 	int i = low;
@@ -93,10 +96,10 @@ using namespace std;
 		// 	return medofMedians(arr, pos+1, high, k-pos+low-1);	
 			
 		// }
-		bool ConvexHull::comparator(Point p, Point q)
-		{
-			return p.x<q.x;
-		}
+		// bool ConvexHull::comparator(Point p, Point q)
+		// {
+		// 	return p.x<q.x;
+		// }
 
 		double ConvexHull::slope(Point p, Point q)
 		{
@@ -105,12 +108,7 @@ using namespace std;
 
 		int ConvexHull::orientation(Point a, Point b, Point c)
 		{
-			/**
-			*returns:-
-			*	0 : Collinear
-			*	1 : clockwise
-			*	2 : anti-clockwise
-			*/
+			
 
 			double orient = (b.y - a.y)*(c.x - b.x) - (c.y - b.y)*(b.x-a.x);
 
@@ -120,8 +118,7 @@ using namespace std;
 				return 1;
 			else
 				return 2;
-		}
-
+		} 
 		int ConvexHull::get_left_most_point(vector<Point> points)
 		{
 			int left_most = 0;
@@ -131,7 +128,6 @@ using namespace std;
 
 			return left_most;
 		}
-
 		pair<Point,Point> ConvexHull::upper_bridge(vector<Point> points, double median_x)
 		{
 			vector<Point> candidates;
