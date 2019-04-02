@@ -25,81 +25,70 @@ using namespace std;
 			return (pow(p.x-x,2)+pow(p.y-y,2));
 		}
 
-		// void ConvexHull::swap_elements(double *a, double *b) 
-		// { 
-		// 	double temp = *a; 
-		// 	*a = *b; 
-		// 	*b = temp; 
-		// }
+		int ConvexHull::partition(std::vector<double>& arr, int l, int r, int x) 
+		{ 
+			int i=l; 
+			while(i<r) 
+			{
+				if (!(arr[i] != x)) 
+				break; 
+				i++;
+			}
+			swap(arr[i], arr[r]); 
 
-		// int partition_med(vector<double>& arr,int low,int high,double element){
-		// 	int i = low;
-		// 	for (i = low; i < high; i++) 
-		// 		if (arr[i] == element) 
-		// 		   break;
-		// 	swap_elements(&arr[i],&arr[high]);
-		// 	// swap()		   	
-			
-		// 	i = low; 
-		// 	for (double j = low; j <= high; j++) 
-		// 	{ 
-		// 		if (arr[j] <= element) 
-		// 		{ 
-		// 			swap_elements(&arr[i], &arr[j]);
-		// 			i++; 
-		// 		} 
-		// 	} 
-		// 	swap_elements(&arr[i], &arr[high]);
-		// 	return (i); 
-		// }
+			i = l; 
+			int j=l;
+			while(j<=r-1) 
+			{ 
+				if (arr[j] <= x) 
+				{ 
+					swap(arr[i], arr[j]); 
+					i++; 
+				} 
+				j++;
+			} 
+			swap(arr[i], arr[r]); 
+			return i; 
+		}
 
-		// double medofMedians(vector<double> arr,int low,int high,int k)
-		// {
-		// 	if(high - low+1 <=5)
-		// 	{
-		// 		int len = high - low + 1;
-		// 		sort(arr.begin(), arr.end());
-		// 		return arr[len/2];
-		// 	}
+		double ConvexHull::findMedian(std::vector<double>& arr, int start, int n) 
+		{ 
+			sort(arr.begin()+start, arr.begin()+start+n); 
+			return arr[start + n/2]; 
+		} 
 
-		// 	int no_medians = 0;
-		// 	int size = high - low + 1;
-		// 	vector<double> medians;
-		// 	for(no_medians = 0; no_medians < size/5 ;no_medians++)
-		// 	{
-		// 		sort(arr.begin() + low + no_medians * 5 , arr.begin() + low + no_medians * 5 + 5);
-		// 		medians.push_back(*(arr.begin() + low + no_medians * 5 + 2));
-		// 	}
-		// 	if(5 * no_medians < size)
-		// 	{
-		// 		int len = size - 5*no_medians;
-		// 		sort(arr.begin() + low + no_medians * 5 , arr.end());
-		// 		if(len%2)
-		// 			medians.push_back(*(arr.begin() + low + no_medians * 5 + len/2));
-		// 		else
-		// 		{
-		// 			medians.push_back(*(arr.begin() + low + no_medians * 5 + len/2));			
-		// 			medians.push_back(*(arr.begin() + low + no_medians * 5 + len/2-1));			
-		// 		}
-		// 		no_medians++;
-		// 	}
-		// 	double medofMed = 0.0;
-		// 	if(medians.size() == 1) medofMed =  medians.back();
-		// 	else{
-		// 		medofMed = medofMedians(medians,0,no_medians - 1,no_medians/2);
+		double ConvexHull::nth_elemnt(std::vector<double>& arr, int l, int r, int k) 
+		{ 
+			if ((k > 0) || (k <= r - l + 1)) 
+			{ 
+				int n = r-l+1; 
 
-		// 	}
+				int i; std::vector<double> median; 
+				while(i++<n/5) 
+					median.push_back(findMedian(arr,l+i*5, 5)); 
+				if (!(i*5 > n)) 
+				{ 
+					median.push_back(findMedian(arr,l+i*5, n%5)); 
+					i++; 
+				}	 
 
-		// 	int pos = partition_med(arr,low,high,medofMed);
-		// 	if (pos-low == k-1) return arr[pos];
-		// 	if (pos-low > k-1)  return medofMedians(arr, low, pos-1, k); 
-		// 	return medofMedians(arr, pos+1, high, k-pos+low-1);	
-			
-		// }
-		// bool ConvexHull::comparator(Point p, Point q)
-		// {
-		// 	return p.x<q.x;
-		// }
+				double medOfMed;
+				if (i == 1)
+					medOfMed = median[i-1];
+				else
+					medOfMed = nth_elemnt(median, 0, i-1, i/2); 
+				int pos = partition(arr, l, r, medOfMed); 
+
+				if (pos == k-1+l) 
+					return arr[pos]; 
+				if (pos > k-1+l) 
+					return nth_elemnt(arr, l, pos-1, k); 
+
+				return nth_elemnt(arr, pos+1, r, k-pos+l-1); 
+			} 
+
+			return 999999; 
+		}
 
 		double ConvexHull::slope(Point p, Point q)
 		{
@@ -166,11 +155,13 @@ using namespace std;
 			}
 			if(k.size()==0)
 				return upper_bridge(candidates,median_x);
-			sort(k.begin(),k.end());
+			// sort(k.begin(),k.end());
 
+			// double K = k[k.size()/2];
+			// double K = median_of_medians(k,0,k.size()-1,k.size()/2);
+			nth_element(k.begin(),k.begin()+(k.size()/2),k.end());
 			double K = k[k.size()/2];
-			// double K = medofMedians(k,0,k.size()-1,k.size()/2);
-
+			// cout<<K<<endl;
 			vector<pair<Point,Point>> small,equal,large;
 
 			for(auto point_pair : point_pairs)
@@ -278,8 +269,9 @@ using namespace std;
 			}
 			if(k.size()==0)
 				return lower_bridge(candidates,median_x);
-			sort(k.begin(),k.end());
+			// sort(k.begin(),k.end());
 
+			nth_element(k.begin(),k.begin()+(k.size()/2),k.end());			
 			double K = k[k.size()/2];
 			// double K = medofMedians(k,0,k.size()-1,k.size()/2);
 
@@ -365,13 +357,14 @@ using namespace std;
 			for(auto k : points){
 				xpoints.push_back(k.x);
 			}
-			sort(points.begin(), points.end(), [](Point p, Point q)
-			{
-				return p.x<q.x;
-			}
-			);
+			// sort(points.begin(), points.end(), [](Point p, Point q)
+			// {
+			// 	return p.x<q.x;
+			// }
+			// );
 			// sort(points.begin(),points.end(),comparator);
-			double median_x = points[points.size()/2].x;
+			nth_element(xpoints.begin(),xpoints.begin()+(xpoints.size()/2),xpoints.end());			
+			double median_x = xpoints[xpoints.size()/2];
 			// double median_x = medofMedians(xpoints,0,points.size()-1,points.size()/2);
 
 			vector<Point> Tleft, Tright;
@@ -415,13 +408,14 @@ using namespace std;
 			for(auto k : points){
 				xpoints.push_back(k.x);
 			}
-			sort(points.begin(), points.end(), [](Point p, Point q)
-			{
-				return p.x<q.x;
-			}
-			);
+			// sort(points.begin(), points.end(), [](Point p, Point q)
+			// {
+			// 	return p.x<q.x;
+			// }
+			// );
 			// sort(points.begin(),points.end(),comparator);
-			double median_x = points[points.size()/2].x;
+			nth_element(xpoints.begin(),xpoints.begin()+(xpoints.size()/2),xpoints.end());						
+			double median_x = xpoints[xpoints.size()/2];
 			// double median_x = medofMedians(xpoints,0,points.size()-1,points.size()/2);
 			
 			vector<Point> Tleft, Tright;

@@ -17,8 +17,8 @@ int main()
 
 
 	// cout<<"-----------------GRAHAM---------------------";
-	 vector<Point> answer1 = ch.graham_scan(points);
-	 vector<Point> answer2 = ch.jarvis_march(points);
+	 // vector<Point> answer1 = ch.graham_scan(points);
+	 // vector<Point> answer2 = ch.jarvis_march(points);
 	 vector<Point> answer3 = ch.kirk(points);
 	 for(Point p : answer3)
 	 	cout<<p.x<<" "<<p.y<<endl;
