@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point',['Point',['../classPoint.html',1,'']]]
+  ['convexhull',['ConvexHull',['../classConvexHull.html',1,'']]]
 ];

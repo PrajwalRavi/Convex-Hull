@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-inp_points = np.loadtxt(fname="kps_test_nw1.txt",skiprows=1)
+file_name = input().strip()
+inp_points = np.loadtxt(fname=file_name,skiprows=1)
 fig = plt.figure()
 ax = fig.add_subplot(111)
 # print(inp_points)

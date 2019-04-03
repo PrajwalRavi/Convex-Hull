@@ -1,44 +1,57 @@
 \hypertarget{classPoint}{}\section{Point Class Reference}
 \label{classPoint}\index{Point@{Point}}
+
+
+{\ttfamily \#include $<$convex.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classPoint_a78b55e8d5466bb8c2cf60fa55f2562ff}{Point} (double x, double \hyperlink{classPoint_afa38be143ae800e6ad69ce8ed4df62d8}{y})
+\mbox{\Hypertarget{classPoint_a06beb6b0502802fdca6b18311162a130}\label{classPoint_a06beb6b0502802fdca6b18311162a130}} 
+\hyperlink{classPoint_a06beb6b0502802fdca6b18311162a130}{Point} (double x\+\_\+coordinate, double y\+\_\+coordinate)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor of \hyperlink{classPoint}{Point}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPoint_ad92f2337b839a94ce97dcdb439b4325a}\label{classPoint_ad92f2337b839a94ce97dcdb439b4325a}} 
+\hyperlink{classPoint_ad92f2337b839a94ce97dcdb439b4325a}{Point} ()
+\begin{DoxyCompactList}\small\item\em Constructor of \hyperlink{classPoint}{Point}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPoint_a586c0e37a501b824a47a03a077220bbb}\label{classPoint_a586c0e37a501b824a47a03a077220bbb}} 
+bool \hyperlink{classPoint_a586c0e37a501b824a47a03a077220bbb}{Not\+Equals} (\hyperlink{classPoint}{Point} p)
+\begin{DoxyCompactList}\small\item\em Returns whether \hyperlink{classPoint}{Point} \textquotesingle{}p\textquotesingle{} is equal to the current \hyperlink{classPoint}{Point} object or not. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPoint_a7dde28996105762fdeba869a0613ce8b}\label{classPoint_a7dde28996105762fdeba869a0613ce8b}} 
+double \hyperlink{classPoint_a7dde28996105762fdeba869a0613ce8b}{distance} (\hyperlink{classPoint}{Point} p)
+\begin{DoxyCompactList}\small\item\em Returns euclidian distance between the current \hyperlink{classPoint}{Point} object and the \hyperlink{classPoint}{Point} \textquotesingle{}p\textquotesingle{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPoint_a06beb6b0502802fdca6b18311162a130}\label{classPoint_a06beb6b0502802fdca6b18311162a130}} 
+{\bfseries Point} (double x\+\_\+coordinate, double y\+\_\+coordinate)
 \item 
-\mbox{\Hypertarget{classPoint_ae29b27909788991feb92e32c0693db0b}\label{classPoint_ae29b27909788991feb92e32c0693db0b}} 
-bool {\bfseries Not\+Equals} (\hyperlink{classPoint}{Point})
+\mbox{\Hypertarget{classPoint_a586c0e37a501b824a47a03a077220bbb}\label{classPoint_a586c0e37a501b824a47a03a077220bbb}} 
+bool {\bfseries Not\+Equals} (\hyperlink{classPoint}{Point} p)
+\item 
+\mbox{\Hypertarget{classPoint_a7dde28996105762fdeba869a0613ce8b}\label{classPoint_a7dde28996105762fdeba869a0613ce8b}} 
+double {\bfseries distance} (\hyperlink{classPoint}{Point} p)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPoint_ab99c56589bc8ad5fa5071387110a5bc7}\label{classPoint_ab99c56589bc8ad5fa5071387110a5bc7}} 
-double {\bfseries x}
+double \hyperlink{classPoint_ab99c56589bc8ad5fa5071387110a5bc7}{x}
 \item 
-double \hyperlink{classPoint_afa38be143ae800e6ad69ce8ed4df62d8}{y}
+\mbox{\Hypertarget{classPoint_afa38be143ae800e6ad69ce8ed4df62d8}\label{classPoint_afa38be143ae800e6ad69ce8ed4df62d8}} 
+double {\bfseries y}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Class for creating points 
 
-\subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classPoint_a78b55e8d5466bb8c2cf60fa55f2562ff}\label{classPoint_a78b55e8d5466bb8c2cf60fa55f2562ff}} 
-\index{Point@{Point}!Point@{Point}}
-\index{Point@{Point}!Point@{Point}}
-\subsubsection{\texorpdfstring{Point()}{Point()}}
-{\footnotesize\ttfamily Point\+::\+Point (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
-
-y co-\/ordinate of the point 
-
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{classPoint_afa38be143ae800e6ad69ce8ed4df62d8}\label{classPoint_afa38be143ae800e6ad69ce8ed4df62d8}} 
-\index{Point@{Point}!y@{y}}
-\index{y@{y}!Point@{Point}}
-\subsubsection{\texorpdfstring{y}{y}}
-{\footnotesize\ttfamily double Point\+::y}
+\mbox{\Hypertarget{classPoint_ab99c56589bc8ad5fa5071387110a5bc7}\label{classPoint_ab99c56589bc8ad5fa5071387110a5bc7}} 
+\index{Point@{Point}!x@{x}}
+\index{x@{x}!Point@{Point}}
+\subsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily double Point\+::x}
 
-x co-\/ordinate of the point 
+x \+: x coordinate of point y \+: y coordinate of point 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-jarvis.\+cpp\end{DoxyCompactItemize}
+convex.\+h\item 
+kirkpat.\+cpp\item 
+convex.\+cpp\end{DoxyCompactItemize}

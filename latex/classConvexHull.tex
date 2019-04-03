@@ -1,0 +1,131 @@
+\hypertarget{classConvexHull}{}\section{Convex\+Hull Class Reference}
+\label{classConvexHull}\index{Convex\+Hull@{Convex\+Hull}}
+
+
+{\ttfamily \#include $<$convex.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_aebe1ba6ff3c13d3e251aa6d16e743d78}{graham\+\_\+scan} (vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_a597bc298aeb5a60a931788d208767692}{jarvis\+\_\+march} (vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_a4f446dacec06b823a438fa4acffb1f8f}{kirk} (vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classConvexHull_a40a096aa99d63b40043cebf56b9049d1}{partition} (std\+::vector$<$ double $>$ \&arr, int l, int r, int x)
+\item 
+double \hyperlink{classConvexHull_ae9a05f0c2c429d5cbac387848c5d838a}{find\+Median} (std\+::vector$<$ double $>$ \&arr, int start, int n)
+\item 
+double \hyperlink{classConvexHull_a582497a1ae56330653d543a2a17b7ccf}{nth\+\_\+elemnt} (std\+::vector$<$ double $>$ \&arr, int l, int r, int k)
+\item 
+\mbox{\Hypertarget{classConvexHull_aedc984e25f85f9fe3d24f6d5ce3e88ed}\label{classConvexHull_aedc984e25f85f9fe3d24f6d5ce3e88ed}} 
+double \hyperlink{classConvexHull_aedc984e25f85f9fe3d24f6d5ce3e88ed}{slope} (\hyperlink{classPoint}{Point} p, \hyperlink{classPoint}{Point} q)
+\begin{DoxyCompactList}\small\item\em Returns slope of straight line passing through \hyperlink{classPoint}{Point} \textquotesingle{}p\textquotesingle{} and \textquotesingle{}q\textquotesingle{}. \end{DoxyCompactList}\item 
+int \hyperlink{classConvexHull_a0ae8784263b86fd85bfb2c545b2e61d5}{orientation} (\hyperlink{classPoint}{Point} a, \hyperlink{classPoint}{Point} b, \hyperlink{classPoint}{Point} c)
+\item 
+int \hyperlink{classConvexHull_ac074c3d6e238d203baa62c0da7b5c7b2}{get\+\_\+left\+\_\+most\+\_\+point} (vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\item 
+pair$<$ \hyperlink{classPoint}{Point}, \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_a7efe590d1b83a1459dc4ccae4e59bf5b}{upper\+\_\+bridge} (vector$<$ \hyperlink{classPoint}{Point} $>$ points, double median\+\_\+x)
+\item 
+pair$<$ \hyperlink{classPoint}{Point}, \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_a8e3d1304a5aa148d020a279db93ac65e}{lower\+\_\+bridge} (vector$<$ \hyperlink{classPoint}{Point} $>$ points, double median\+\_\+x)
+\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_a9c8c6225b24b35b43c9d7dea05b76023}{upper\+\_\+hull} (\hyperlink{classPoint}{Point} pmin, \hyperlink{classPoint}{Point} pmax, vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classConvexHull_a2fd80a61b1996d7f58ce071fc7a5e33c}{lower\+\_\+hull} (\hyperlink{classPoint}{Point} pmin, \hyperlink{classPoint}{Point} pmax, vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConvexHull_a06328b644694f8e75273311c37f22a5e}\label{classConvexHull_a06328b644694f8e75273311c37f22a5e}} 
+\hyperlink{classPoint}{Point} \hyperlink{classConvexHull_a06328b644694f8e75273311c37f22a5e}{left\+\_\+most\+\_\+point}
+\begin{DoxyCompactList}\small\item\em left\+\_\+most\+\_\+point \+: point with least x coordinate in given set of points \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for creating an object of convex hull that computes the set of points on the convex hull 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classConvexHull_ae9a05f0c2c429d5cbac387848c5d838a}\label{classConvexHull_ae9a05f0c2c429d5cbac387848c5d838a}} 
+\index{Convex\+Hull@{Convex\+Hull}!find\+Median@{find\+Median}}
+\index{find\+Median@{find\+Median}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{find\+Median()}{findMedian()}}
+{\footnotesize\ttfamily double Convex\+Hull\+::find\+Median (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{arr,  }\item[{int}]{start,  }\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Finds the median element of an array (array size $<$ 5) \mbox{\Hypertarget{classConvexHull_ac074c3d6e238d203baa62c0da7b5c7b2}\label{classConvexHull_ac074c3d6e238d203baa62c0da7b5c7b2}} 
+\index{Convex\+Hull@{Convex\+Hull}!get\+\_\+left\+\_\+most\+\_\+point@{get\+\_\+left\+\_\+most\+\_\+point}}
+\index{get\+\_\+left\+\_\+most\+\_\+point@{get\+\_\+left\+\_\+most\+\_\+point}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{get\+\_\+left\+\_\+most\+\_\+point()}{get\_left\_most\_point()}}
+{\footnotesize\ttfamily int Convex\+Hull\+::get\+\_\+left\+\_\+most\+\_\+point (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns point with least x coordinate \mbox{\Hypertarget{classConvexHull_aebe1ba6ff3c13d3e251aa6d16e743d78}\label{classConvexHull_aebe1ba6ff3c13d3e251aa6d16e743d78}} 
+\index{Convex\+Hull@{Convex\+Hull}!graham\+\_\+scan@{graham\+\_\+scan}}
+\index{graham\+\_\+scan@{graham\+\_\+scan}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{graham\+\_\+scan()}{graham\_scan()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::graham\+\_\+scan (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})}
+
+Returns the set of points in the convex hull in clockwise order Algorithm\+: Graham Scan \mbox{\Hypertarget{classConvexHull_a597bc298aeb5a60a931788d208767692}\label{classConvexHull_a597bc298aeb5a60a931788d208767692}} 
+\index{Convex\+Hull@{Convex\+Hull}!jarvis\+\_\+march@{jarvis\+\_\+march}}
+\index{jarvis\+\_\+march@{jarvis\+\_\+march}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{jarvis\+\_\+march()}{jarvis\_march()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::jarvis\+\_\+march (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})}
+
+Returns the set of points in the convex hull in clockwise order Algorithm\+: Jarvis\textquotesingle{} March \mbox{\Hypertarget{classConvexHull_a4f446dacec06b823a438fa4acffb1f8f}\label{classConvexHull_a4f446dacec06b823a438fa4acffb1f8f}} 
+\index{Convex\+Hull@{Convex\+Hull}!kirk@{kirk}}
+\index{kirk@{kirk}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{kirk()}{kirk()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::kirk (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})}
+
+Returns the set of points in the convex hull in clockwise order Algorithm\+: Kirkpatrik siedel \mbox{\Hypertarget{classConvexHull_a8e3d1304a5aa148d020a279db93ac65e}\label{classConvexHull_a8e3d1304a5aa148d020a279db93ac65e}} 
+\index{Convex\+Hull@{Convex\+Hull}!lower\+\_\+bridge@{lower\+\_\+bridge}}
+\index{lower\+\_\+bridge@{lower\+\_\+bridge}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{lower\+\_\+bridge()}{lower\_bridge()}}
+{\footnotesize\ttfamily pair$<$ \hyperlink{classPoint}{Point}, \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::lower\+\_\+bridge (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points,  }\item[{double}]{median\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Function that returns lower bridge of the set of points \mbox{\Hypertarget{classConvexHull_a2fd80a61b1996d7f58ce071fc7a5e33c}\label{classConvexHull_a2fd80a61b1996d7f58ce071fc7a5e33c}} 
+\index{Convex\+Hull@{Convex\+Hull}!lower\+\_\+hull@{lower\+\_\+hull}}
+\index{lower\+\_\+hull@{lower\+\_\+hull}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{lower\+\_\+hull()}{lower\_hull()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::lower\+\_\+hull (\begin{DoxyParamCaption}\item[{\hyperlink{classPoint}{Point}}]{pmin,  }\item[{\hyperlink{classPoint}{Point}}]{pmax,  }\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns the set of points in lower hull in anticlockwise order \mbox{\Hypertarget{classConvexHull_a582497a1ae56330653d543a2a17b7ccf}\label{classConvexHull_a582497a1ae56330653d543a2a17b7ccf}} 
+\index{Convex\+Hull@{Convex\+Hull}!nth\+\_\+elemnt@{nth\+\_\+elemnt}}
+\index{nth\+\_\+elemnt@{nth\+\_\+elemnt}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{nth\+\_\+elemnt()}{nth\_elemnt()}}
+{\footnotesize\ttfamily double Convex\+Hull\+::nth\+\_\+elemnt (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{arr,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Finds median element of an array using medians of medians algorithm \mbox{\Hypertarget{classConvexHull_a0ae8784263b86fd85bfb2c545b2e61d5}\label{classConvexHull_a0ae8784263b86fd85bfb2c545b2e61d5}} 
+\index{Convex\+Hull@{Convex\+Hull}!orientation@{orientation}}
+\index{orientation@{orientation}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{orientation()}{orientation()}}
+{\footnotesize\ttfamily int Convex\+Hull\+::orientation (\begin{DoxyParamCaption}\item[{\hyperlink{classPoint}{Point}}]{a,  }\item[{\hyperlink{classPoint}{Point}}]{b,  }\item[{\hyperlink{classPoint}{Point}}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns circular orientation of three points \textquotesingle{}a\textquotesingle{},\textquotesingle{}b\textquotesingle{} and \textquotesingle{}c\textquotesingle{}
+
+Returns\+:-\/ 0 \+: Collinear 1 \+: clockwise 2 \+: anti-\/clockwise \mbox{\Hypertarget{classConvexHull_a40a096aa99d63b40043cebf56b9049d1}\label{classConvexHull_a40a096aa99d63b40043cebf56b9049d1}} 
+\index{Convex\+Hull@{Convex\+Hull}!partition@{partition}}
+\index{partition@{partition}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{partition()}{partition()}}
+{\footnotesize\ttfamily int Convex\+Hull\+::partition (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{arr,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Partition array around the pivot element \textquotesingle{}x\textquotesingle{} and returns index of the pivot in the array \mbox{\Hypertarget{classConvexHull_a7efe590d1b83a1459dc4ccae4e59bf5b}\label{classConvexHull_a7efe590d1b83a1459dc4ccae4e59bf5b}} 
+\index{Convex\+Hull@{Convex\+Hull}!upper\+\_\+bridge@{upper\+\_\+bridge}}
+\index{upper\+\_\+bridge@{upper\+\_\+bridge}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{upper\+\_\+bridge()}{upper\_bridge()}}
+{\footnotesize\ttfamily pair$<$ \hyperlink{classPoint}{Point}, \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::upper\+\_\+bridge (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points,  }\item[{double}]{median\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Function that returns upper bridge of the set of points \mbox{\Hypertarget{classConvexHull_a9c8c6225b24b35b43c9d7dea05b76023}\label{classConvexHull_a9c8c6225b24b35b43c9d7dea05b76023}} 
+\index{Convex\+Hull@{Convex\+Hull}!upper\+\_\+hull@{upper\+\_\+hull}}
+\index{upper\+\_\+hull@{upper\+\_\+hull}!Convex\+Hull@{Convex\+Hull}}
+\subsubsection{\texorpdfstring{upper\+\_\+hull()}{upper\_hull()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Convex\+Hull\+::upper\+\_\+hull (\begin{DoxyParamCaption}\item[{\hyperlink{classPoint}{Point}}]{pmin,  }\item[{\hyperlink{classPoint}{Point}}]{pmax,  }\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns set of points in the upper hull in clockwise order 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+convex.\+h\item 
+convex.\+cpp\end{DoxyCompactItemize}

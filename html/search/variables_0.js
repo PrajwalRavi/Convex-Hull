@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y',['y',['../classPoint.html#afa38be143ae800e6ad69ce8ed4df62d8',1,'Point']]]
+  ['left_5fmost_5fpoint',['left_most_point',['../classConvexHull.html#a06328b644694f8e75273311c37f22a5e',1,'ConvexHull']]]
 ];

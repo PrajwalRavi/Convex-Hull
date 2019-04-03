@@ -14,12 +14,12 @@ using namespace std;
 			x=0;
 			y=0;
 		}
-		/// returns whether Point 'p' is equal to the current Point object or not
+		/// Returns whether Point 'p' is equal to the current Point object or not
 		bool Point::NotEquals(Point p)
 		{
 			return (x==p.x && y==p.y);
 		}
-		///returns euclidian distance between the current Point object and the Point 'p'
+		///Returns euclidian distance between the current Point object and the Point 'p'
 		double Point::distance(Point p)
 		{
 			return (pow(p.x-x,2)+pow(p.y-y,2));
@@ -504,11 +504,16 @@ using namespace std;
 			do
 			{
 				answer.push_back(points[p]);
+				cout<<p<<endl;
 				q = (p+1)%points.size();
-
+				cout<<q<<endl;
 				for(int i=0; i<points.size(); i++)
-					if(orientation(points[p],points[i],points[q])==2)
+					if(orientation(points[p],points[i],points[q])==2){
 						q=i;
+						cout<<i<<endl;
+					}
+				cout<<q<<endl;
+				cout<<"----"<<endl;
 
 				p=q;
 			}while(p!=left_most);
