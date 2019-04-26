@@ -1,4 +1,9 @@
 # Convex Hull
+* This repo contains implementation of Jarvis march, Graham scan and Kirk Patrick Seidel algorithm in C++14.
+* convex.cpp has been implemented as an API, enabling usage by importing into other programs easily.
+* main.cpp is a driver program.
+* GUI for KPS shows final output, while that for others shows intermediate steps also.
+* Many tests and test generators are present in the folder - tests. This includes tests in which all points lie on the convex hull - ideal for comparing running times.
 
 ## Usage
 
